@@ -1,0 +1,15 @@
+.title {
+  font-size: 1.5em;
+  color: white;
+}
+
+$done-color: grey;
+
+.done {
+  color: $done-color;
+  text-decoration: line-through;
+}
+
+.todo-nb {
+  font-size: 1.5em;
+}

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title class="title">
+      To-Do List
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-badge class="todo-nb" color="warning">
+        {{ tasks.length }}
+        <!--{{ tasks.length - tasks.filter(task => task.status === true).length }}-->
+      </ion-badge>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card-subtitle class="ion-padding-start ion-padding-top">
+    <p>Miserable life if not do...</p>
+  </ion-card-subtitle>
+  <ion-list>
+    <ion-item-sliding *ngFor="let task of tasks">
+      <ion-item>
+        <ion-label [class.done]="task.status == true">
+          {{task.title}}
+        </ion-label>
+        <ion-checkbox color="dark" [(ngModel)]="task.status" slot="end"></ion-checkbox>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-button color="danger">
+          <ion-icon name="trash" (click)="deleteTask()"></ion-icon>
+        </ion-button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <!-- Ajouter une tache -->
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="newTask.title"
+                 placeholder="Ajouter une tache...">
+      </ion-input>
+      <ion-button (click)="saveTask()" fill="clear" color="dark" slot="end">
+        <ion-icon name="add" ></ion-icon>
+      </ion-button>
+    </ion-item>
+
+  </ion-list>
+
+  <!--<pre>-->
+    <!--{{ newTask | json }}-->
+  <!--</pre>-->
+</ion-content>
